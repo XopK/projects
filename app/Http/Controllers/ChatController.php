@@ -152,7 +152,7 @@ class ChatController extends Controller
                 'message' => $request->message,
                 'is_read' => 0,
                 'chat_id' => $request->chatId,
-                'file' => json_encode($messageFile),
+                'file' => count($messageFile) ? json_encode($messageFile) : null,
             ]);
 
             event(new SendMessage($message));

@@ -14,7 +14,6 @@ export default defineConfig({
             'resources/js/myGroups.js',
             'resources/js/teachersFetch.js',
             'resources/js/teacherProfileFetch.js',
-            'resources/js/chatFile.js',
             'resources/js/listUsersFetch.js',
         ],
         refresh: true,

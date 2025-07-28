@@ -30,10 +30,12 @@
         }
 
     </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 @endsection
 
 @section('content')
-    <div class="container mx-auto px-5 xl:px-8 lg:px-10 h-[80vh] my-5">
+    <div class="container mx-auto px-5 xl:px-8 lg:px-10 h-[87vh] my-5">
         <div class="messenger-container h-full flex flex-col md:flex-row">
             <!-- Кнопка для открытия списка диалогов в мобильной версии -->
             <div class="md:hidden">
@@ -101,7 +103,7 @@
                     <input id="chat-input" type="text" class="input input-bordered w-full mr-4 text-sm" autocomplete="off"
                            placeholder="Напишите сообщение..."/>
                     <div class="send-btn flex items-center gap-2">
-                        {{--<div class="tooltip tooltip-top" data-tip="Прикрепить файл">
+                        <div class="tooltip tooltip-top" data-tip="Прикрепить файл">
                             <input type="file" id="hiddenFileInput" class="hidden" multiple>
                             <button id="file" class="btn rounded-full p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -110,7 +112,7 @@
                                           d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"/>
                                 </svg>
                             </button>
-                        </div>--}}
+                        </div>
                         <div class="tooltip tooltip-top" data-tip="Отправить">
                             <button id="send-button" class="btn btn-neutral rounded-full p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -143,5 +145,6 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     @vite(['resources/js/fetchMessages.js', 'resources/js/fetchListDialogues.js'])
 @endsection

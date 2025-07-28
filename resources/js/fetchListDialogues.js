@@ -22,7 +22,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     const chatTime = new Date(chat.last_message.created_at).toLocaleTimeString('ru-RU', {
                         hour: '2-digit', minute: '2-digit'
                     });
-                    const lastMessageText = chat.last_message && chat.last_message.message ? chat.last_message.message : "Нет сообщений";
+                    let lastMessageText = 'Нет сообщений';
+
+                    if (chat.last_message) {
+                        const hasText = !!chat.last_message.message;
+                        const hasFiles = chat.last_message.file && chat.last_message.file !== 'null';
+
+                        if (hasText) {
+                            lastMessageText = chat.last_message.message;
+                        } else if (hasFiles) {
+                            try {
+                                const files = JSON.parse(chat.last_message.file);
+                                if (Array.isArray(files) && files.length > 0) {
+                                    lastMessageText = `${files.length} вложени${files.length === 1 ? 'е' : (files.length < 5 ? 'я' : 'й')}`;
+                                }
+                            } catch (e) {
+                                console.error('Ошибка при разборе вложений:', e);
+                            }
+                        }
+                    }
 
                     const chatItem = `
                                 <a href="/chat?user=${chat.receiver.id}">
