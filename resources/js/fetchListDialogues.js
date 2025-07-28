@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } else {
                 chats.forEach(chat => {
-                    const chatTime = new Date(chat.created_at).toLocaleTimeString('ru-RU', {
+                    const chatTime = new Date(chat.last_message.created_at).toLocaleTimeString('ru-RU', {
                         hour: '2-digit', minute: '2-digit'
                     });
                     const lastMessageText = chat.last_message && chat.last_message.message ? chat.last_message.message : "Нет сообщений";

@@ -58,7 +58,7 @@
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input type="search" id="search-input-header" class="grow" placeholder="Поиск"/>
+                    <input type="search" id="search-input-header" class="grow" placeholder="Поиск" autocomplete="off"/>
                 </label>
             </div>
         </div>

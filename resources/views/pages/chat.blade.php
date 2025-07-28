@@ -98,7 +98,7 @@
                 <div id="preview-chat" class="flex overflow-x-auto whitespace-nowrap gap-2 mb-2"></div>
 
                 <div class="flex items-center mt-auto">
-                    <input id="chat-input" type="text" class="input input-bordered w-full mr-4 text-sm"
+                    <input id="chat-input" type="text" class="input input-bordered w-full mr-4 text-sm" autocomplete="off"
                            placeholder="Напишите сообщение..."/>
                     <div class="send-btn flex items-center gap-2">
                         {{--<div class="tooltip tooltip-top" data-tip="Прикрепить файл">

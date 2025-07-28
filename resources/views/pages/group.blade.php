@@ -3,8 +3,8 @@
 
 @section('style')
     <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
 
 @endsection
@@ -53,11 +53,11 @@
                 <div class="absolute top-4 right-4 z-20">
                     <a href="{{route('teacher', ['teacher' => $group->user_id])}}">
                         <div
-                                class="rounded-full bg-base-300 w-24 h-24 flex items-center justify-center text-center text-sm font-semibold shadow-lg overflow-hidden">
+                            class="rounded-full bg-base-300 w-24 h-24 flex items-center justify-center text-center text-sm font-semibold shadow-lg overflow-hidden">
                             <img
-                                    src="{{$group->user->photo_profile}}"
-                                    class="rounded-full w-full h-full object-cover"
-                                    alt="{{$group->user->name}}">
+                                src="{{$group->user->photo_profile}}"
+                                class="rounded-full w-full h-full object-cover"
+                                alt="{{$group->user->name}}">
                         </div>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                     <div class="flex flex-wrap gap-2">
                         @foreach($group->categories as $category)
                             <div
-                                    class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">{{$category->name}}</div>
+                                class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">{{$category->name}}</div>
                         @endforeach
                     </div>
 
@@ -96,7 +96,7 @@
         <!-- Блок информации -->
         <div class="bg-base-200 mt-6 p-6 rounded-xl">
             <div
-                    class="grid grid-cols-1 {{auth()->check() && auth()->user()->id == $group->user_id ?  'md:grid-cols-[3fr_1fr]' : ''}} gap-4 items-start">
+                class="grid grid-cols-1 {{auth()->check() && auth()->user()->id == $group->user_id ?  'md:grid-cols-[3fr_1fr]' : ''}} gap-4 items-start">
                 <!-- Левый (основной) блок -->
                 @if($group->status_for_user === 'pending')
                     <div class="relative w-full bg-base-100 p-4 rounded-lg shadow-sm h-auto mb-2">
@@ -198,9 +198,9 @@
                                     <svg stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 time-icon">
                                         <path
-                                                d="M4.51555 7C3.55827 8.4301 3 10.1499 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V6M12 12L8 8"
-                                                stroke="#000000" stroke-width="1" stroke-linecap="round"
-                                                stroke-linejoin="round"/>
+                                            d="M4.51555 7C3.55827 8.4301 3 10.1499 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V6M12 12L8 8"
+                                            stroke="#000000" stroke-width="1" stroke-linecap="round"
+                                            stroke-linejoin="round"/>
                                     </svg>
                                     <span id="schedule-span" class="font-semibold text-gray-800 w-full">
                                         Продолжительность: {{ $group->duration }} мин
@@ -278,10 +278,10 @@
                                     </a>
 
                                     <button
-                                            class="btn btn-square rounded-full btn-sm del-reg"
-                                            data-id="{{$group->id}}"
-                                            data-desc="{{$group->title}}" data-user="{{$list->id}}"
-                                            data-descuser="{{$list->name}} {{$list->nickname}}">
+                                        class="btn btn-square rounded-full btn-sm del-reg"
+                                        data-id="{{$group->id}}"
+                                        data-desc="{{$group->title}}" data-user="{{$list->id}}"
+                                        data-descuser="{{$list->name}} {{$list->nickname}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -315,7 +315,7 @@
                         <div class="mt-4">
                             <p class="text-sm text-gray-600">
                                 Свободных мест: <span
-                                        class="font-medium {{ $color }}">{{ $current }}/{{ $total }}</span>
+                                    class="font-medium {{ $color }}">{{ $current }}/{{ $total }}</span>
                             </p>
                         </div>
                     </div>
@@ -410,7 +410,7 @@
                                       d="M3 15a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4M12 3v12m0 0l-3-3m3 3l3-3"/>
                             </svg>
                             <p class="text-sm text-gray-600"><span
-                                        class="font-semibold">Нажмите или перетащите файл</span>
+                                    class="font-semibold">Нажмите или перетащите файл</span>
                             </p>
                             <p class="text-xs text-gray-400">JPEG, JPG, PNG до 5MB</p>
                         </div>
@@ -451,11 +451,11 @@
                                       d="M3 15a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4M12 3v12m0 0l-3-3m3 3l3-3"/>
                             </svg>
                             <p class="text-sm text-gray-600"><span
-                                        class="font-semibold">Нажмите или перетащите файл</span>
+                                    class="font-semibold">Нажмите или перетащите файл</span>
                             </p>
                             <p class="text-xs text-gray-400">MP4, WEBM, MOV</p>
                             <p class="text-xs text-gray-400 mt-1">Максимальный размер файла: <span
-                                        class="font-semibold">70 МБ</span></p>
+                                    class="font-semibold">70 МБ</span></p>
                         </div>
                         <form action="{{route('groupAddVideo', ['group' => $group->id])}}" id="postVideo" method="post"
                               enctype="multipart/form-data">
@@ -492,7 +492,7 @@
                             <div id="dropdownToggle" class="select w-full cursor-pointer">Все</div>
                         </fieldset>
                         <ul
-                                class="dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box text-sm w-full max-h-60 overflow-y-auto divide-y divide-gray-200 select-none">
+                            class="dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box text-sm w-full max-h-60 overflow-y-auto divide-y divide-gray-200 select-none">
                             <li class="py-2 px-3 hover:bg-gray-100 transition-colors duration-150">
                                 <label class="flex items-center space-x-2 cursor-pointer">
                                     <input type="radio" name="filter_app" checked value="all"
