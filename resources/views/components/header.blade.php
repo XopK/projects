@@ -21,7 +21,7 @@
                 @endauth
             </ul>
         </div>
-        <a href="{{route('index')}}" class="btn btn-ghost text-xl">Все танцы</a>
+        <a href="{{route('index')}}" class="btn btn-ghost text-xl px-1">Все танцы</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
@@ -35,33 +35,14 @@
             @endauth
         </ul>
     </div>
-    <div class="navbar-end gap-2">
-        <div class="dropdown dropdown-left dropdown-center">
-            <div tabindex="0" role="button" class="btn btn-circle btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
-                </svg>
-            </div>
-            <div tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 sm:w-80 w-54 p-2 mr-1 shadow-sm">
-                <label class="input">
-                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <g
-                            stroke-linejoin="round"
-                            stroke-linecap="round"
-                            stroke-width="2.5"
-                            fill="none"
-                            stroke="currentColor"
-                        >
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                        </g>
-                    </svg>
-                    <input type="search" id="search-input-header" class="grow" placeholder="Поиск" autocomplete="off"/>
-                </label>
-            </div>
-        </div>
+    <div class="navbar-end gap-1">
+        <a href="{{route('groups')}}" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+            </svg>
+        </a>
         @guest
             <a class="btn" onclick="authModal.showModal()">Войти</a>
         @endguest

@@ -1,5 +1,7 @@
 moment.locale('ru');
 const teacher = window.teacherId
+const ageConfirmed = localStorage.getItem('ageConfirmed');
+
 let currentPage = 1;
 let lastPage = false;
 let isFetchingMore = false;
@@ -89,7 +91,8 @@ async function fetchGroups(page = 1, search = searchQuery, categories = categori
                 &levels=${encodeURIComponent(levels)}
                 &class=${encodeURIComponent(classes)}
                 &sort=${encodeURIComponent(sort)}
-                &field=${encodeURIComponent(field)}`);
+                &field=${encodeURIComponent(field)}
+                &adult=${ageConfirmed}`);
 
         const response = await request.json();
 

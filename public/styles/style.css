@@ -67,6 +67,11 @@ body {
     --plyr-control-padding: 10px;
 }
 
+#ageVerify::backdrop {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 
 
 

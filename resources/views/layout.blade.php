@@ -42,6 +42,20 @@
     </div>
 </div>
 
+<dialog id="ageVerify" class="modal" style="display: flex; align-items: center; justify-content: center;">
+    <div class="modal-box text-center">
+        <h3 class="text-lg font-bold mb-4">Подтверждение возраста</h3>
+        <img src="/images/18.svg" class="size-25 mx-auto mb-3" alt="18.svg">
+        <p class="py-4">Этот пост доступен только для лиц, достигших 18 лет.</p>
+        <div class="modal-action justify-center">
+            <form method="dialog" class="flex gap-4 justify-center">
+                <button id="ageVerifyTrue" class="btn btn-success">Мне 18+</button>
+                <button id="ageVerifyFalse" class="btn btn-error">Мне нет 18+</button>
+            </form>
+        </div>
+    </div>
+</dialog>
+
 @yield('block')
 
 <div class="app mt-20">

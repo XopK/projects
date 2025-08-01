@@ -84,6 +84,17 @@
                 </fieldset>
 
                 <fieldset class="fieldset my-2">
+                    <legend class="fieldset-legend text-base">
+                        Ограничения <span class="text-red-400 mr-5">*</span>
+                    </legend>
+
+                    <label class="option text-sm flex items-center gap-1">
+                        <input type="checkbox" name="isAdult" class="checkbox checkbox-sm" @checked($group->age_verify == 1)/>
+                        18+
+                    </label>
+                </fieldset>
+
+                <fieldset class="fieldset my-2">
                     <legend class="fieldset-legend text-base">Уровень <span class="text-red-400 mr-5">*</span></legend>
 
                     <div class="flex flex-wrap gap-3">
@@ -175,14 +186,14 @@
                 @endphp
 
                 <x-elements.input label="Дата старта" name="date" id="date_start"
-                                  type="date" isRequired="true" value="{{ $dateTimeValue }}"/>
+                                  type="date" value="{{ $dateTimeValue }}"/>
 
                 <x-elements.input label="Дата окончания" name="date_end" id="date_end"
                                   type="date" value="{{ $dateEndValue }}"/>
 
                 <fieldset class="fieldset">
                     <legend class="fieldset-legend text-base">
-                        Время начала занятия <span class="text-red-400 mr-5">*</span>
+                        Время начала занятия
                     </legend>
 
                     <select id="time" class="input pika-single w-full pr-10" name="time">
@@ -222,7 +233,7 @@
 
                 <x-elements.input label="Цена (₽)" name="price" min="0" id="price" value="{{$group->price}}"
                                   type="number"
-                                  placeholder="Стоимость вступления в группу" isRequired="true"/>
+                                  placeholder="Стоимость вступления в группу"/>
 
                 <x-elements.input label="Продолжительность занятия (в минутах)" name="duration" min="0" id="duration"
                                   value="{{$group->duration}}"
@@ -230,15 +241,21 @@
                                   placeholder="Продолжительность занятия (в минутах)"/>
 
                 <fieldset class="fieldset">
-                    <legend class="fieldset-legend text-base">Адрес <span class="text-red-400 mr-5">*</span></legend>
-                    <select class="select w-full" name="address" required>
-                        <option disabled @if($group->address->id === null) selected @endif>Выберите адрес</option>
+                    <legend class="fieldset-legend text-base">
+                        Адрес
+                    </legend>
+
+                    <select class="select w-full" name="address">
+                        <option disabled @if(optional($group->address)->id === null) selected @endif>
+                            Выберите адрес
+                        </option>
+
                         @forelse($addresses as $address)
                             <option
-                                    value="{{$address->id}}"
-                                    @if($group->address->id == $address->id) selected @endif
+                                value="{{ $address->id }}"
+                                @if(optional($group->address)->id == $address->id) selected @endif
                             >
-                                {{$address->studio_name . ' — ' . $address->studio_address}}
+                                {{ $address->studio_name . ' — ' . $address->studio_address }}
                             </option>
                         @empty
                             <option>Адреса отсутствуют</option>

@@ -37,17 +37,32 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => banner.style.display = 'none', 500);
     });
 
-    if (searchInput) {
-        searchInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const query = searchInput.value.trim();
-                if (query !== '') {
-                    window.location.href = '/groups?search=' + encodeURIComponent(query);
-                }
-            }
-        });
+    const ageVerify = document.getElementById('ageVerify');
+    const btnFalse = document.getElementById('ageVerifyFalse');
+    const btnTrue = document.getElementById('ageVerifyTrue');
+
+    const ageConfirmed = localStorage.getItem('ageConfirmed');
+
+    if (ageConfirmed === null) {
+        if (ageVerify && typeof ageVerify.showModal === 'function') {
+            ageVerify.showModal();
+        }
     }
+
+    btnFalse.addEventListener('click', function () {
+        localStorage.setItem('ageConfirmed', 'false');
+
+        if (window.location.pathname.startsWith('/group/')) {
+            window.location.href = '/';
+        } else {
+            location.reload();
+        }
+    });
+
+    btnTrue.addEventListener('click', function () {
+        localStorage.setItem('ageConfirmed', 'true');
+        location.close();
+    });
 });
 
 if (window.location.pathname.startsWith("/profile")) {

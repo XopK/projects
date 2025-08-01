@@ -60,6 +60,17 @@
             </fieldset>
 
             <fieldset class="fieldset my-2">
+                <legend class="fieldset-legend text-base">
+                    Ограничения <span class="text-red-400 mr-5">*</span>
+                </legend>
+
+                <label class="option text-sm flex items-center gap-1">
+                    <input type="checkbox" name="isAdult" class="checkbox checkbox-sm"/>
+                    18+
+                </label>
+            </fieldset>
+
+            <fieldset class="fieldset my-2">
                 <legend class="fieldset-legend text-base">Уровень <span class="text-red-400 mr-5">*</span></legend>
 
                 <div class="flex flex-wrap gap-3">

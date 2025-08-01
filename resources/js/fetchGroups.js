@@ -1,6 +1,8 @@
 moment.locale('ru');
 const urlParams = new URLSearchParams(window.location.search);
 const searchInput = document.getElementById('search-input');
+const ageConfirmed = localStorage.getItem('ageConfirmed');
+
 let currentPage = 1;
 let lastPage = false;
 let isFetchingMore = false;
@@ -106,7 +108,8 @@ async function fetchGroups(page = 1, query = currentQuery, selectedCategory = cu
             &date=${encodeURIComponent(date)}
             &time=${encodeURIComponent(time)}
             &sort=${encodeURIComponent(sort)}
-            &field=${encodeURIComponent(field)}`);
+            &field=${encodeURIComponent(field)}
+            &adult=${ageConfirmed}`);
 
         const response = await request.json();
 
@@ -132,7 +135,6 @@ async function fetchGroups(page = 1, query = currentQuery, selectedCategory = cu
         }
 
         response.data.forEach(group => {
-
             const card = `
                     <div class="bg-white rounded-lg shadow-lg opacity-0 translate-y-5 transition-all duration-500">
                     <!-- Заголовок с аватаркой и именем пользователя -->

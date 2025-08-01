@@ -51,6 +51,7 @@ class GroupCreateRequest extends FormRequest
             'preview' => 'nullable|image|mimes:jpeg,png,jpg|max:4000',
             'video_group' => 'required|file|video|max:71680',
             'date_end' => 'nullable|date_format:Y-m-d',
+            'isAdult' => 'nullable',
         ];
     }
 }

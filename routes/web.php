@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdultCheck;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Middleware\TeacherCheck;
 use Illuminate\Support\Facades\Route;
@@ -79,7 +80,7 @@ Route::controller(GroupController::class)->group(function () {
 
     Route::get('/groups', 'index')->name('groups');
 
-    Route::get('/group/{group}', 'group')->name('group');
+    Route::get('/group/{group}', 'group')->name('group')->middleware(AdultCheck::class);
 
     Route::post('/group/create', 'create')->middleware(TeacherCheck::class)->name('groupCreate');
 

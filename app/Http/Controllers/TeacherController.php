@@ -209,12 +209,21 @@ class TeacherController extends Controller
         $level = $request->get('levels');
         $class = $request->get('class');
         $sort = $request->get('sort');
+        $isAdult = $request->get('adult');
         $field = $request->get('field');
 
         $allowedFields = ['created_at', 'title'];
         $allowedSorts = ['asc', 'desc'];
 
-        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'duration', 'video_preview', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end', 'schedule')->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name'])->where('user_id', $teacher);
+        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'age_verify', 'duration', 'video_preview', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end', 'schedule')->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name'])->where('user_id', $teacher);
+
+        if (auth()->check()) {
+            if (!auth()->user()->isAdult()) {
+                $groupQuery->where('age_verify', 0);
+            }
+        } elseif ($isAdult === 'false') {
+            $groupQuery->where('age_verify', 0);
+        }
 
         if (!empty($search)) {
             $groupQuery->where(function ($query) use ($search) {

@@ -97,6 +97,7 @@ class GroupController extends Controller
                 'level' => $levels,
                 'class' => $request->class,
                 'duration' => $request->duration,
+                'age_verify' => $request->has('isAdult') ? 1 : 0,
                 'schedule' => $weeks,
                 'active' => 1,
                 'user_id' => Auth::user()->id,
@@ -141,11 +142,20 @@ class GroupController extends Controller
         $time = $request->get('time');
         $sort = $request->get('sort');
         $field = $request->get('field');
+        $isAdult = $request->get('adult');
         $allowedFields = ['created_at', 'title'];
         $allowedSorts = ['asc', 'desc'];
 
-        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'duration', 'video_preview', 'schedule', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end')
+        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'age_verify', 'duration', 'video_preview', 'schedule', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end')
             ->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name']);
+
+        if (auth()->check()) {
+            if (!auth()->user()->isAdult()) {
+                $groupQuery->where('age_verify', 0);
+            }
+        } elseif ($isAdult === 'false') {
+            $groupQuery->where('age_verify', 0);
+        }
 
         if (!empty($search)) {
             $groupQuery->where(function ($query) use ($search) {
@@ -435,13 +445,13 @@ class GroupController extends Controller
             'levels.*' => 'in:beginner,starter,intermediate,advanced',
             'count_people' => 'required|integer|min:1|max:99',
             'class' => 'required|in:regular_group,course,intensive,class,private_lesson,guest_masterclass',
-            'date' => 'required|date_format:Y-m-d',
+            'date' => 'nullable|date_format:Y-m-d',
             'date_end' => 'nullable|date_format:Y-m-d',
-            'time' => 'required|date_format:H:i',
+            'time' => 'nullable|date_format:H:i',
             'selected_week' => 'required_if:is_schedule,true|array|min:1|max:7',
             'duration' => 'nullable|numeric|min:0',
-            'price' => 'required|numeric|min:0',
-            'address' => 'required',
+            'price' => 'nullable|numeric|min:0',
+            'address' => 'nullable',
         ])->validate();
 
         $levels = $this->arrayParse($validated['levels'], Group::levels);
@@ -455,11 +465,12 @@ class GroupController extends Controller
             'class' => $validated['class'],
             'date' => $validated['date'],
             'date_end' => $validated['date_end'],
-            'time' => $validated['time'],
+            'time' => $request->time,
             'schedule' => $weeks,
+            'age_verify' => $request->has('isAdult') ? 1 : 0,
             'duration' => $validated['duration'],
             'price' => $validated['price'],
-            'address_id' => $validated['address'],
+            'address_id' => $request->address,
         ]);
 
         $categoryIds = collect($data['directions'])->pluck('id')->toArray();
