@@ -41,11 +41,9 @@ class AddressListLayout extends Table
                         ModalToggle::make('Редактировать')
                             ->icon('pencil')
                             ->modal('editAddress')
-                            ->method('editAddress')
+                            ->method('editAddress', ['id' => $address->id])
                             ->modalTitle('Редактировать адрес')
-                            ->asyncParameters([
-                                'id' => $address->id,
-                            ])->class('btn btn-sm btn-secondary') .
+                            ->class('btn btn-sm btn-secondary') .
 
                         Button::make('Удалить')
                             ->icon('trash')

@@ -120,16 +120,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const files = JSON.parse(message.file);
                 if (Array.isArray(files) && files.length > 0) {
                     filesHtml = files.map(url => {
-                        // Получаем имя файла из URL
+
                         const fileName = url.split('/').pop() || 'файл';
                         const fileExtension = fileName.split('.').pop()?.toLowerCase() || '';
 
-                        // Проверяем, является ли файл изображением
                         const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
                         const isImage = imageExtensions.includes(fileExtension);
 
                         if (isImage) {
-                            // Отображаем изображение как раньше
                             return `
                             <div class="p-1">
                                 <a href="${url}" data-fancybox="gallery-${message.id}">
@@ -139,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         `;
                         } else {
-                            // Отображаем файл для скачивания
                             const fileIcon = getFileIcon(fileExtension);
                             return `
                               <div class="p-2 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
@@ -275,7 +272,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 userOther = user_other;
                 currentMessages = {mine, other};
 
-                // Инициализируем шапку только один раз при получении данных
                 initHeader(userOther);
 
                 if (!window.chatInitialized) {

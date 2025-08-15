@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Orchid\Screens\Address\AddressScreen;
 use App\Orchid\Screens\Category\CategoryScreen;
+use App\Orchid\Screens\Group\GroupEditScreen;
 use App\Orchid\Screens\Group\GroupScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -82,6 +83,8 @@ Route::screen('roles', RoleListScreen::class)
 Route::screen('category', CategoryScreen::class)->name('platform.category');
 
 Route::screen('group', GroupScreen::class)->name('platform.group');
+
+Route::screen('group/{group}/edit', GroupEditScreen::class)->name('platform.group.edit');
 
 Route::screen('address', AddressScreen::class)->name('platform.address');
 

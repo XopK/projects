@@ -80,7 +80,7 @@
                         <div class="flex items-center gap-2">
 
                             <div class="tooltip tooltip-bottom sm:tooltip-top" data-tip="Список пользователей">
-                                <button class="btn btn-square rounded-full listUsersBtn" data-group-id="{{$group->id}}">
+                                <button class="btn btn-square rounded-full listUsersBtn" data-group-id="{{$group->id}}" data-group-name="{{$group->title}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -168,7 +168,7 @@
 
     <dialog id="listUsers" class="modal">
         <div class="modal-box max-w-2xl">
-            <h3 class="text-lg font-bold">Список пользователей</h3>
+            <h3 id="titleGroupList" class="text-lg font-bold">Список пользователей</h3>
             <div class="filt-block mt-3">
                 <label class="floating-label block w-full mb-3">
                     <input type="text" id="searchList" placeholder="Поиск" name="search_list" class="input w-full"/>

@@ -17,7 +17,7 @@ class GroupScreen extends Screen
     public function query(): iterable
     {
         return [
-            'groups' => Group::filters()->paginate(10)
+            'groups' => Group::filters()->orderBy('created_at', 'desc')->paginate(10)
         ];
     }
 
@@ -38,7 +38,8 @@ class GroupScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+        ];
     }
 
     /**
@@ -55,11 +56,27 @@ class GroupScreen extends Screen
 
     public function remove(Group $group)
     {
+        $group->delete();
+
         Toast::info('Пост удалён');
     }
 
     public function ban(Group $group)
     {
+        $group->status_block = !$group->status_block;
+        $group->save();
         Toast::warning('Пост заблокирован');
+    }
+
+    public function adult(Group $group)
+    {
+        $group->age_verify = !$group->age_verify;
+        $group->save();
+
+        if ($group->age_verify) {
+            Toast::info('Вы добавили ограничение 18+ на пост');
+        } else {
+            Toast::info('Вы сняли ограничение 18+ с поста');
+        }
     }
 }

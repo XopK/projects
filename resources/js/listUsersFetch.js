@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.listUsersBtn');
     const modal = document.getElementById('listUsers');
     const listUserContainer = document.getElementById('list-user-container');
+    const titleGroupList = document.getElementById('titleGroupList');
     const searchInputList = document.getElementById('searchList');
     const confirmDeleteList = document.getElementById('confirmDeleteList');
 
@@ -14,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async () => {
 
             currentGroupId = btn.dataset.groupId;
+            const groupName = btn.dataset.groupName;
+
+            titleGroupList.innerText = `Список пользователей группы "${groupName}"`;
+
             const originalContent = btn.innerHTML;
 
             btn.innerHTML = '<span class="loading loading-spinner loading-sm"></span>';

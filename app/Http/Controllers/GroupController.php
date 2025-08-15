@@ -54,6 +54,10 @@ class GroupController extends Controller
     {
         $sessionKey = 'view_group_' . $group->id;
 
+        if($group->status_block == 1){
+            return abort(404);
+        }
+
         $confirmedUsers = $group->list_users()
             ->wherePivot('status_confirm', 1)
             ->get();
@@ -147,7 +151,7 @@ class GroupController extends Controller
         $allowedSorts = ['asc', 'desc'];
 
         $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'age_verify', 'duration', 'video_preview', 'schedule', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end')
-            ->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name']);
+            ->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name'])->where('status_block', 0);
 
         if (auth()->check()) {
             if (!auth()->user()->isAdult()) {

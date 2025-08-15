@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Category;
 
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -45,6 +46,13 @@ class CategoryListLayout extends Table
                 ->cantHide()
                 ->render(function ($category) {
                     return
+                        ModalToggle::make('Редактировать')
+                            ->icon('pencil')
+                            ->modal('editCategory')
+                            ->method('editCategory', ['id' => $category->id])
+                            ->modalTitle('Редактировать категорию')
+                            ->class('btn btn-sm btn-secondary') .
+
                         Button::make('Удалить')
                             ->icon('trash')
                             ->confirm("Вы уверены, что хотите удалить категорию «{$category->name}»?")

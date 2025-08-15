@@ -79,17 +79,49 @@ class AddressScreen extends Screen
             ]))->title('Добавить адрес')->applyButton('Создать')->size('modal-dialog-centered'),
 
             Layout::modal('editAddress', Layout::rows([
-                Input::make('studio_name')
+                Input::make('address.studio_name')
                     ->required()
                     ->title('Название студии')
                     ->type('text'),
 
-                Input::make('studio_address')
+                Input::make('address.studio_address')
                     ->required()
                     ->title('Адрес студии')
                     ->type('text'),
-            ]))->title('Редактировать адрес')->applyButton('Редактировать')->size('modal-dialog-centered'),
+
+                Input::make('address.id')
+                    ->type('hidden'),
+            ]))->title('Редактировать адрес')
+                ->applyButton('Сохранить изменения')
+                ->size('modal-dialog-centered')
+                ->async('asyncGetAddress')
         ];
+    }
+    public function asyncGetAddress(Request $request): iterable
+    {
+        $address = AddressList::findOrFail($request->get('id'));
+
+        return [
+            'address' => $address,
+        ];
+    }
+
+    public function editAddress(Request $request): void
+    {
+        $request->validate([
+            'address.studio_name' => 'required|string|max:255',
+            'address.studio_address' => 'required|string|max:255',
+            'address.id' => 'required|exists:address_lists,id',
+        ]);
+
+        $address = AddressList::findOrFail($request->input('address.id'));
+
+        $address->update([
+            'studio_name' => $request->input('address.studio_name'),
+            'studio_address' => $request->input('address.studio_address'),
+        ]);
+
+        Toast::info('Адрес успешно обновлен!');
     }
 
     public function createAddress(Request $request): void

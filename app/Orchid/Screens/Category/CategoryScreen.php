@@ -75,7 +75,46 @@ class CategoryScreen extends Screen
                     ->type('text'),
 
             ]))->title('Создать категорию')->applyButton('Создать')->size('modal-dialog-centered'),
+
+            Layout::modal('editCategory', Layout::rows([
+                Input::make('category.name')
+                    ->required()
+                    ->title('Название категории')
+                    ->type('text'),
+
+                Input::make('category.id')
+                    ->type('hidden'),
+            ]))->title('Редактировать категорию')
+                ->applyButton('Сохранить изменения')
+                ->size('modal-dialog-centered')
+                ->async('asyncGetCategory'),
         ];
+    }
+
+    public function asyncGetCategory(Request $request): iterable
+    {
+        $category = Category::findOrFail($request->get('id'));
+
+        return [
+            'category' => $category,
+        ];
+    }
+
+    public function editCategory(Request $request): void
+    {
+        $request->validate([
+            'category.name' => 'required|string|max:255',
+            'category.id' => 'required|exists:categories,id',
+        ]);
+
+        $category = Category::findOrFail($request->input('category.id'));
+
+        $category->update([
+            'name' => $request->input('category.name'),
+            'slug' => Str::slug($request->input('category.name')),
+        ]);
+
+        Toast::info('Категория обновлена!');
     }
 
     public function createCategory(Request $request): void

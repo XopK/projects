@@ -215,7 +215,7 @@ class TeacherController extends Controller
         $allowedFields = ['created_at', 'title'];
         $allowedSorts = ['asc', 'desc'];
 
-        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'age_verify', 'duration', 'video_preview', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end', 'schedule')->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name'])->where('user_id', $teacher);
+        $groupQuery = Group::select('id', 'title', 'description', 'video_group', 'age_verify', 'duration', 'video_preview', 'created_at', 'class', 'user_id', 'address_id', 'price', 'date', 'time', 'date_end', 'schedule')->with(['user:id,name,nickname,photo_profile', 'address:id,studio_address,studio_name', 'categories:id,name'])->where('user_id', $teacher)->where('status_block', 0);
 
         if (auth()->check()) {
             if (!auth()->user()->isAdult()) {

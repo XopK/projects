@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -23,11 +24,8 @@ class GroupListLayout extends Table
      */
     protected $target = 'groups';
 
-    /**
-     * Get the table cells to be displayed.
-     *
-     * @return TD[]
-     */
+
+
     protected function columns(): iterable
     {
         return [
@@ -68,12 +66,15 @@ class GroupListLayout extends Table
 
             TD::make('date', 'Дата')
                 ->width('100px')
-                ->render(fn($group) => Carbon::parse($group->date)->format('d.m.Y')),
+                ->render(fn($group) => $group->date
+                    ? Carbon::parse($group->date)->format('d.m.Y')
+                    : 'Дата не указана'),
 
             TD::make('time', 'Время')
-                ->width('80px')
-                ->alignCenter()
-                ->render(fn($group) => Carbon::parse($group->time)->format('H:i')),
+                ->width('100px')
+                ->render(fn($group) => $group->time
+                    ? Carbon::parse($group->time)->format('H:i')
+                    : 'Время не указано'),
 
             TD::make('price', 'Цена')
                 ->width('100px')
@@ -111,7 +112,7 @@ class GroupListLayout extends Table
                     'guest_masterclass' => 'Мастер-класс',
                 ][$group->class] ?? $group->class),
 
-            TD::make('categories', 'Направленения')
+            TD::make('categories', 'Направления')
                 ->render(function (Group $group) {
                     return $group->categories->pluck('name')->implode(', ');
                 }),
@@ -127,6 +128,19 @@ class GroupListLayout extends Table
                 ->render(fn($group) => $group->active
                     ? '🟢'
                     : '🔴'),
+
+            TD::make('age_verify', '18+')
+                ->width('50px')
+                ->alignCenter()
+                ->render(fn($group) => $group->age_verify
+                    ? '🟢'
+                    : '🔴'),
+
+            TD::make('status_block', 'Блокировка')
+                ->width('130px')
+                ->render(fn($group) => $group->status_block
+                    ? 'Заблокирован'
+                    : 'Нет блокировки'),
 
             TD::make('user_id', 'Автор')
                 ->width('180px')
@@ -152,19 +166,39 @@ class GroupListLayout extends Table
                 ->render(fn(Group $group) => DropDown::make()
                     ->icon('bs.three-dots-vertical')
                     ->list([
+//                        Link::make('Редактировать')
+//                            ->icon('pencil')
+//                            ->route('platform.group.edit', $group->id),
+
                         Button::make('Удалить')
                             ->icon('bs.trash3')
                             ->confirm("Вы уверены, что хотите удалить пост <b style='color: red;'>«{$group->title}»</b>")
                             ->method('remove', [
-                                'id' => $group->id,
+                                'group' => $group->id,
                             ]),
 
-                        Button::make('Заблокировать')
+                        Button::make($group->status_block ? 'Разблокировать' : 'Заблокировать')
                             ->icon('ban')
-                            ->confirm("Вы уверены, что хотите заблокировать пост <b style='color: red;'>«{$group->title}»</b>")
+                            ->confirm($group->status_block
+                                ? "Вы уверены, что хотите разблокировать пост <b style='color: red;'>«{$group->title}»</b>?"
+                                : "Вы уверены, что хотите заблокировать пост <b style='color: red;'>«{$group->title}»</b>?"
+                            )
                             ->method('ban', [
-                                'id' => $group->id,
+                                'group' => $group->id,
                             ]),
+
+                        Button::make($group->age_verify ? 'Снять ограничение 18+' : 'Ограничить 18+')
+                            ->icon('explicit')
+                            ->confirm($group->age_verify
+                                ? "Вы уверены, что хотите снять 18+ с поста <b style='color: red;'>«{$group->title}»</b>?"
+                                : "Вы уверены, что хотите добавить 18+ на пост <b style='color: red;'>«{$group->title}»</b>?"
+                            )
+                            ->method('adult', ['group' => $group->id]),
+
+                        Link::make('Перейти к посту')
+                            ->icon('box-arrow-up-right')
+                            ->href(route('group', ['group' => $group->id]))
+                            ->target('_blank'),
                     ])
                 ),
         ];
