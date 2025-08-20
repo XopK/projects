@@ -69,6 +69,7 @@ class User extends Authenticatable
         'id' => Where::class,
         'name' => Like::class,
         'email' => Like::class,
+        'phone' => Like::class,
         'updated_at' => WhereDateStartEnd::class,
         'created_at' => WhereDateStartEnd::class,
     ];

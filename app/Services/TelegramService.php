@@ -64,7 +64,7 @@ class TelegramService
 
                 if ($user) {
                     $chatId = $response['message']['chat']['id'];
-                    $telegram_username = $response['message']['from']['username'];
+                    $telegram_username = $response['message']['from']['username'] ?? null;
 
                     $alreadyLinked = User::where('chat_id_telegram', $chatId)->where('id', '!=', $user->id)->exists();
 

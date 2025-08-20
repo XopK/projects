@@ -74,13 +74,17 @@ HTML;
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn (User $user) => ModalToggle::make($user->email)
+                ->render(fn(User $user) => ModalToggle::make($user->email)
                     ->modal('editUserModal')
                     ->modalTitle($user->presenter()->title())
                     ->method('saveUser')
                     ->asyncParameters([
                         'user' => $user->id,
                     ])),
+
+            TD::make('phone', 'Телефон')
+                ->align(TD::ALIGN_LEFT)
+                ->filter(Input::make()),
 
             TD::make('created_at', __('Created'))
                 ->usingComponent(DateTimeSplit::class)
@@ -96,7 +100,7 @@ HTML;
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(fn (User $user) => DropDown::make()
+                ->render(fn(User $user) => DropDown::make()
                     ->icon('bs.three-dots-vertical')
                     ->list([
 

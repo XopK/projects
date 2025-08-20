@@ -255,7 +255,7 @@
                         <div class="flex justify-between items-start">
                             <h2 class="text-lg font-medium mb-2">Группа</h2>
                             <button class="btn btn-square btn-sm rounded-full listUsersBtn"
-                                    data-group-id="{{$group->id}}">
+                                    data-group-id="{{$group->id}}" data-group-name="{{$group->title}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -277,7 +277,7 @@
                                         </div>
                                     </a>
 
-                                    <button
+                                    {{--<button
                                         class="btn btn-square rounded-full btn-sm del-reg"
                                         data-id="{{$group->id}}"
                                         data-desc="{{$group->title}}" data-user="{{$list->id}}"
@@ -287,7 +287,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                   d="M6 18 18 6M6 6l12 12"/>
                                         </svg>
-                                    </button>
+                                    </button>--}}
 
                                 </li>
 
@@ -480,7 +480,7 @@
 
         <dialog id="listUsers" class="modal">
             <div class="modal-box max-w-2xl">
-                <h3 class="text-lg font-bold">Список пользователей</h3>
+                <h3 id="titleGroupList" class="text-lg font-bold">Список пользователей</h3>
                 <div class="filt-block mt-3">
                     <label class="floating-label block w-full mb-3">
                         <input type="text" id="searchList" placeholder="Поиск" name="search_list" class="input w-full"/>

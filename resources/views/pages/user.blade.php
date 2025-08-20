@@ -26,7 +26,7 @@
             <div class="divider"></div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
+                {{--<div>
                     <p class="text-gray-500 text-sm">Email</p>
                     <p class="text-lg font-medium">{{ $user->email ?? 'Не указано' }}</p>
                 </div>
@@ -37,7 +37,7 @@
                 <div>
                     <p class="text-gray-500 text-sm">Telegram</p>
                     <p class="text-lg font-medium">{{ $user->username_telegram ?? 'Не указано' }}</p>
-                </div>
+                </div>--}}
                 <div>
                     <p class="text-gray-500 text-sm">Дата регистрации</p>
                     <p class="text-lg font-medium">{{ $user->created_at->format('d.m.Y') ?? 'Неизвестно' }}</p>
