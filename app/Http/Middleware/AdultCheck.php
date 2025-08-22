@@ -22,16 +22,14 @@ class AdultCheck
         if ($group->age_verify) {
             $user = Auth::user();
 
-            if(!$user){
-                abort(403);
-            }
+            if ($user) {
+                if ($user->birthday == null) {
+                    abort(403);
+                }
 
-            if ($user->birthday == null) {
-                abort(403);
-            }
-
-            if ($user && !$user->isAdult()) {
-                abort(403);
+                if (!$user->isAdult()) {
+                    abort(403);
+                }
             }
         }
 

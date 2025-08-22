@@ -62,6 +62,66 @@
     @yield('content')
 </div>
 
+<!-- Нижнее меню -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 md:hidden">
+    <div class="flex justify-evenly items-center py-3">
+        <!-- Домой -->
+        <a href="{{route('index')}}" class="flex flex-col items-center flex-1 text-gray-700 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M3 9.75L12 3l9 6.75V21a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 21V9.75z"/>
+            </svg>
+            <span class="text-[10px]">Главная</span>
+        </a>
+
+        <!-- Поиск -->
+        <a href="{{route('groups')}}" class="flex flex-col items-center flex-1 text-gray-700 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+            </svg>
+            <span class="text-[10px]">Поиск</span>
+        </a>
+
+        @auth
+            @if(auth()->user()->roles->contains('slug', 'teacher'))
+                <!-- Добавить -->
+                <a href="{{route('profileMyGroups')}}?modal=open"
+                   class="flex flex-col items-center flex-1 text-gray-700 hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    <span class="text-[10px]">Добавить</span>
+                </a>
+            @endif
+
+            <!-- Чаты -->
+            <a href="{{route('chat')}}" class="flex flex-col items-center flex-1 text-gray-700 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+                </svg>
+                <span class="text-[10px]">Сообщения</span>
+            </a>
+
+            <!-- Профиль -->
+            <a href="{{route('profile')}}" class="flex flex-col items-center flex-1 text-gray-700 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                </svg>
+
+                <span class="text-[10px]">Профиль</span>
+            </a>
+        @endauth
+    </div>
+</nav>
+
 <template id="alert-template">
     <div class="block-alert" style="z-index: 9999">
         <div id="alert" role="alert" class="alert">

@@ -54,7 +54,7 @@ class GroupController extends Controller
     {
         $sessionKey = 'view_group_' . $group->id;
 
-        if($group->status_block == 1){
+        if ($group->status_block == 1) {
             return abort(404);
         }
 
@@ -231,8 +231,10 @@ class GroupController extends Controller
             : [];
 
         $group->getCollection()->transform(function ($item) use ($favorites) {
+
             $item->isFavorite = in_array($item->id, $favorites);
             $item->created_diff = Carbon::parse($item->created_at)->diffForHumans();
+            $item->isAuth = auth()->check();
 
             $daysOrder = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 

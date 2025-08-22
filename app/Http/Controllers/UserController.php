@@ -195,6 +195,7 @@ class UserController extends Controller
             );
             $user->chat_id_telegram = null;
             $user->username_telegram = null;
+            $user->notify_tg = 0;
             $user->save();
 
             return redirect()->back()->with('success', 'Вы успешно отвязали свой аккаунт!');

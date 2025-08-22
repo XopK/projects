@@ -1,4 +1,4 @@
-<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10 pb-20">
     <aside>
         <a href="{{route('index')}}" class="text-2xl font-bold">Все танцы</a>
         <p>

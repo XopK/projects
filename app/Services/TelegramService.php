@@ -78,6 +78,7 @@ class TelegramService
                     $user->chat_id_telegram = $chatId;
                     $user->token_telegram = null;
                     $user->username_telegram = $telegram_username;
+                    $user->notify_tg = 1;
                     $user->save();
 
                     $message = "🎉 Аккаунт успешно привязан!\n\nТеперь вы будете получать уведомления здесь.\n\nНе забудьте включить уведомления\nв Telegram и на сайте, чтобы получать уведомления.";
