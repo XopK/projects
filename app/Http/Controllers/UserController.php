@@ -282,12 +282,14 @@ class UserController extends Controller
 
     public function notifications()
     {
-        $unreadNotifications = auth()->user()->unreadNotifications;
-        $readNotifications = auth()->user()->readNotifications;
+        $user = auth()->user();
+
+        $unreadNotifications = $user->unreadNotifications()->paginate(10, ['*'], 'unread_page');
+        $readNotifications = $user->readNotifications()->paginate(10, ['*'], 'read_page');
 
         return view('pages.notifications', [
             'unreadNotifications' => $unreadNotifications,
-            'readNotifications' => $readNotifications
+            'readNotifications' => $readNotifications,
         ]);
     }
 

@@ -23,7 +23,7 @@ class CategoryScreen extends Screen
     public function query(): iterable
     {
         return [
-            'categories' => Category::filters()->paginate(10)
+            'categories' => Category::filters()->paginate(100)
         ];
     }
 

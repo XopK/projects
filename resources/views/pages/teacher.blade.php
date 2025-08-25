@@ -79,6 +79,8 @@
             @endif
             <p class="text-gray-500 font-bold mt-2">На
                 сайте: {{ \Carbon\Carbon::parse($teacher->created_at)->translatedFormat('с\ d F Y') }}</p>
+
+            <a href="{{route('chat', ['user'=> $teacher->id])}}" class="btn btn-neutral mt-3">Связаться</a>
         </div>
 
 

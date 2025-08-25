@@ -17,7 +17,7 @@ class GroupScreen extends Screen
     public function query(): iterable
     {
         return [
-            'groups' => Group::filters()->orderBy('created_at', 'desc')->paginate(10)
+            'groups' => Group::filters()->orderBy('created_at', 'desc')->paginate(100)
         ];
     }
 

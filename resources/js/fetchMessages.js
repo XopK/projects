@@ -48,16 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
         renderPreview();
     });
 
-    function initHeader(user) {
+    async function initHeader(user) {
         if (!headerInitialized && user) {
-            headerPhoto.innerHTML = `<img src="${user.photo_profile}" alt="Avatar" class="rounded-full">`;
+            const teacherUrl = `/teacher/${user.id}`;
+            const userUrl = `/user/${user.id}`;
+            let pageUrl = teacherUrl;
+
+            try {
+                const response = await fetch(teacherUrl, {method: 'HEAD'});
+                if (!response.ok) {
+                    pageUrl = userUrl;
+                }
+            } catch (error) {
+                pageUrl = userUrl;
+            }
+
+            headerPhoto.innerHTML = `
+                <a href="${pageUrl}">
+                    <div class="w-13 h-13 rounded-full overflow-hidden">
+                        <img src="${user.photo_profile}" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                </a>
+            `;
 
             const oldHeaderName = document.getElementById('header-name');
             if (oldHeaderName) {
                 oldHeaderName.remove();
             }
 
-            const nameElement = `<h2 id="header-name" class="text-xl font-semibold">${user.name} ${user.nickname ? `${user.nickname}` : ''}</h2>`;
+            const nameElement = `<a href="${pageUrl}"><h2 id="header-name" class="text-xl font-semibold">${user.name} ${user.nickname ? user.nickname : ''}</h2></a>`;
             chatHeader.insertAdjacentHTML('beforeend', nameElement);
 
             headerInitialized = true;

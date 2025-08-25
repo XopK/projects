@@ -59,7 +59,7 @@
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="indicator btn btn-ghost btn-circle">
                     @if($countNotifications)
-                        <span class="indicator-item indicator-top indicator-start badge badge-sm badge-secondary">
+                        <span class="indicator-item indicator-top indicator-end mr-2 badge badge-sm badge-secondary">
                             {{ $countNotifications > 99 ? '99+' : $countNotifications }}
                         </span>
                     @endif
@@ -72,7 +72,7 @@
                     </svg>
                 </div>
                 <ul tabindex="0"
-                    class="dropdown-content z-[9999] mt-3 w-80 menu bg-base-100 rounded-box shadow p-2">
+                    class="dropdown-content z-[9999] mt-3 w-80 menu bg-base-100 ml-20 rounded-box shadow p-2">
                     <li class="text-sm text-gray-400 mb-2 px-2">Уведомления</li>
                     @forelse($notifications as $note)
                         <li>

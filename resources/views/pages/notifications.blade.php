@@ -67,7 +67,7 @@
                         </div>
                     @endforelse
                 </ul>
-
+                {{ $unreadNotifications->links() }}
             </div>
         </div>
 
@@ -87,7 +87,8 @@
                     @forelse($readNotifications as $notification)
                         <li class="list-row flex flex-col sm:flex-row items-center sm:justify-between gap-4 p-2 w-full mb-4 sm:mb-0 opacity-60">
                             <div class="flex flex-col sm:flex-row items-center gap-4 w-full">
-                                <div class="w-full sm:w-32 sm:h-32 rounded-box overflow-hidden flex items-center justify-center text-gray-400 text-4xl">
+                                <div
+                                    class="w-full sm:w-32 sm:h-32 rounded-box overflow-hidden flex items-center justify-center text-gray-400 text-4xl">
                                     🔔
                                 </div>
 
@@ -95,7 +96,8 @@
                                     <div class="font-medium text-lg">
                                         {{ $notification->data['title'] ?? 'Уведомление' }}
                                     </div>
-                                    <div class="description_group text-sm font-semibold opacity-60 mt-2 sm:mt-0 w-64 sm:w-96 mx-auto sm:mx-0">
+                                    <div
+                                        class="description_group text-sm font-semibold opacity-60 mt-2 sm:mt-0 w-64 sm:w-96 mx-auto sm:mx-0">
                                         {{ $notification->data['message'] ?? 'Нет текста' }}
                                     </div>
                                     <div class="text-xs text-gray-400 mt-1">
@@ -124,6 +126,8 @@
                             Нет прочитанных уведомлений.
                         </div>
                     @endforelse
+
+                    {{ $readNotifications->links() }}
                 </ul>
             </div>
         </div>

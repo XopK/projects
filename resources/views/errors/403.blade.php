@@ -27,7 +27,7 @@
             Отказано в доступе!
         </div>
         <div class="text-center text-lg text-gray-500">
-            У вас нет прав для доступа к этой странице.
+            Для доступа к этой странице необходимо авторизоваться.
         </div>
         <a href="{{route('index')}}" class="btn btn-neutral mt-4">Главная страница</a>
     </div>

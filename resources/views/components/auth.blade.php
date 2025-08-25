@@ -48,6 +48,13 @@
                                   type="password" isRequired="true"
                                   placeholder="Повторите пароль" optional="Введите пароль снова."/>
 
+                <div class="flex items-center justify-between my-3">
+                    <div class="policy flex gap-2.5 items-center">
+                        <input type="checkbox" name="policy" required class="checkbox checkbox-sm my-4"/>
+                        <label for="policy" class="text-base">Я соглашаюсь с <a href="" class="link link-hover">Условиями и Положениями</a> для регистрации.</label>
+                    </div>
+                </div>
+
                 <button
                     type="submit"
                     class="btn btn-neutral mt-3 p-7 w-full border-2 border-transparent hover:border-2 hover:border-gray-200 transition-all duration-300 ease-in-out">

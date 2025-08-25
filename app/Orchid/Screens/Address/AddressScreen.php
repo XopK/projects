@@ -21,7 +21,7 @@ class AddressScreen extends Screen
     public function query(): iterable
     {
         return [
-            'addresses' => AddressList::filters()->paginate(10),
+            'addresses' => AddressList::filters()->paginate(100),
         ];
     }
 

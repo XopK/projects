@@ -91,7 +91,7 @@ class Notifier
     {
         $dateTime = Carbon::parse($group->date . ' ' . $group->time);
         $formattedDate = $dateTime->translatedFormat('j F Y') . ' в ' . $dateTime->format('H:i');
-        $url = route('group', ['group' => $group->id]);
+        $url = route('group', ['group' => $group->id], true);
 
         $map = [
             ':client' => $client->name . ' ' . $client->nickname,
