@@ -527,6 +527,15 @@
     </script>
 
     <script>
+        document.getElementById('create-form').addEventListener('submit', function () {
+            const loadingText = document.getElementById('loading-post');
+            loadingText.innerHTML = 'Идёт обновление поста, пожалуйста подождите...';
+            loadingText.classList.remove('hidden');
+
+        });
+    </script>
+
+    <script>
         function autoGrow(element) {
             element.style.height = 'auto';
             element.style.height = element.scrollHeight + 'px';
@@ -653,11 +662,19 @@
 
         // После отправки формы "Добавить фото"
         document.getElementById('postPhoto').addEventListener('submit', function () {
+            const loadingText = document.getElementById('loading-post');
+            loadingText.innerHTML = 'Идёт загрузка фотографий, пожалуйста подождите...';
+            loadingText.classList.remove('hidden');
+
             if (addPhotoDialog?.close) addPhotoDialog.close();
         });
 
         // После отправки формы "Добавить видео"
         document.getElementById('postVideo').addEventListener('submit', function () {
+            const loadingText = document.getElementById('loading-post');
+            loadingText.innerHTML = 'Идёт загрузка видео, пожалуйста подождите...';
+            loadingText.classList.remove('hidden');
+
             if (addVideoDialog?.close) addVideoDialog.close();
         });
     </script>

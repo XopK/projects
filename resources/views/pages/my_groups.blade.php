@@ -80,7 +80,8 @@
                         <div class="flex items-center gap-2">
 
                             <div class="tooltip tooltip-bottom sm:tooltip-top" data-tip="Список пользователей">
-                                <button class="btn btn-square rounded-full listUsersBtn" data-group-id="{{$group->id}}" data-group-name="{{$group->title}}">
+                                <button class="btn btn-square rounded-full listUsersBtn" data-group-id="{{$group->id}}"
+                                        data-group-name="{{$group->title}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -281,6 +282,10 @@
 
     <script>
         document.getElementById('create-form').addEventListener('submit', function () {
+            const loadingText = document.getElementById('loading-post');
+            loadingText.innerHTML = 'Идёт загрузка поста, пожалуйста подождите...';
+            loadingText.classList.remove('hidden');
+
             create_group.close();
         });
     </script>

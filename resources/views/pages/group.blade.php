@@ -761,10 +761,18 @@
             const addVideoDialog = document.getElementById('addVideo');
 
             document.getElementById('postPhoto').addEventListener('submit', function () {
+                const loadingText = document.getElementById('loading-post');
+                loadingText.innerHTML = 'Идёт загрузка фотографий, пожалуйста подождите...';
+                loadingText.classList.remove('hidden');
+
                 if (addPhotoDialog?.close) addPhotoDialog.close();
             });
 
             document.getElementById('postVideo').addEventListener('submit', function () {
+                const loadingText = document.getElementById('loading-post');
+                loadingText.innerHTML = 'Идёт загрузка видео, пожалуйста подождите...';
+                loadingText.classList.remove('hidden');
+
                 if (addVideoDialog?.close) addVideoDialog.close();
             });
         </script>

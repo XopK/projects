@@ -21,9 +21,9 @@
 <body class="font-play">
 
 <div id="loader">
+    <span id="loading-post" class="hidden"></span>
     <span class="loading loading-dots loading-xl"></span>
 </div>
-
 
 <div class="alert-container">
 </div>
