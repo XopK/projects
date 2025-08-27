@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
+Route::get('/about_us', [GroupController::class, 'about_us'])->name('about_us');
+
 Route::get('/groups/index', [GroupController::class, 'getGroupWithVideo'])->name('getGroupsIndex');
 
 Route::get('/teachers/index', [TeacherController::class, 'getTeacher'])->name('getTeachersIndex');

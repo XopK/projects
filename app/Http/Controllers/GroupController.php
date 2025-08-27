@@ -35,6 +35,11 @@ class GroupController extends Controller
         $this->notifier = $notifier;
     }
 
+    public function about_us()
+    {
+        return view('pages.about_us');
+    }
+
     public function index()
     {
         $user = auth()->user();
