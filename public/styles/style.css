@@ -1,3 +1,31 @@
+@font-face {
+    font-family: 'Nimbus Sans';
+    src: url('/fonts/NimbusSanL-Reg.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans';
+    src: url('/fonts/NimbusSanL-RegIta.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans';
+    src: url('/fonts/NimbusSanL-Bol.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans';
+    src: url('/fonts/NimbusSanL-Bollta.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
 html, body {
     height: 100%;
     margin: 0;

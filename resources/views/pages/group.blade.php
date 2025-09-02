@@ -85,10 +85,16 @@
                         }
                     @endphp
 
+
                     <button class="btn btn-outline mt-3" {!! $onclick !!}>
                         {{ $group->status_for_user === 'confirmed' ? 'Заявка подтверждена' :
                            ($group->status_for_user === 'pending' ? 'Заявка отправлена' : 'Записаться') }}
                     </button>
+
+                    @auth
+                        <a href="{{ route('chat', ['user'=> $group->user->id]) }}"
+                           class="btn btn-outline mt-3">Связаться</a>
+                    @endauth
                 </div>
             </div>
         </div>

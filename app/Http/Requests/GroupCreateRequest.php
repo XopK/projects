@@ -49,7 +49,7 @@ class GroupCreateRequest extends FormRequest
             'duration' => 'nullable|numeric|min:0',
             'address' => $isPrivateLesson ? 'nullable' : 'required',
             'preview' => 'nullable|image|mimes:jpeg,png,jpg|max:4000',
-            'video_group' => 'required|file|video|max:71680',
+            'video_group' => 'required|max:71680',
             'date_end' => 'nullable|date_format:Y-m-d',
             'isAdult' => 'nullable',
         ];

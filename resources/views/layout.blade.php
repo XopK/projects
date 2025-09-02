@@ -42,6 +42,16 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css"/>
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+
+    <meta name="keywords" content="танцы Уфа, танцы в Уфе, записаться на танцы, школа танцев Уфа, уроки танцев Уфа">
+    <meta name="description" content="Запишитесь на танцы в Уфе! Мы поможем сделать первые шаги и подобрать стиль, который подойдет именно вам. Танцы для всех возрастов.">
+
+    <meta property="og:title" content="Записаться на танцы | Танцы Уфа">
+    <meta property="og:description" content="Танцы — это для всех! Запишитесь на занятия в Уфе и сделайте первые шаги с нами.">
+    <meta property="og:type" content="website">
+
     @yield('style')
 
     <title>@yield('title', 'Все танцы')</title>
@@ -63,7 +73,7 @@
 @endguest
 
 <div id="cookie-banner"
-     class="fixed bottom-0 left-0 right-0 bg-[#0d0e12] text-sm p-4 shadow-md z-50 text-white opacity-0 translate-y-full transition-all duration-500">
+     class="fixed bottom-0 left-0 right-0 bg-[#0d0e12] text-sm p-4 shadow-md z-50 text-white opacity-0 translate-y-full transition-all duration-500 z-99">
     <div class="container mx-auto flex justify-between items-center">
         <p>Мы используем cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим.</p>
         <button id="cookie-accept" class="btn btn-soft btn-success ml-4">Принять</button>
@@ -86,7 +96,7 @@
 
 @yield('block')
 
-<div class="app mt-20">
+<div class="app @yield('app-margin', 'mt-20')">
     @yield('content')
 </div>
 

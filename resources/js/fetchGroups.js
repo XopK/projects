@@ -238,13 +238,13 @@ async function fetchGroups(page = 1, query = currentQuery, selectedCategory = cu
 
                         </div>
                         <div class="flex space-x-4">
-                            <a href="/group/${group.id}" class="btn btn-neutral btn-sm">Подробнее</a>
+                            <a href="/group/${group.id}" class="btn btn-neutral btn-sm">Записаться</a>
                         </div>
                     </div>
 
                     <div class="desc-post pb-4 px-4">
                         <div class="collapsible-content text-sm text-gray-700 space-y-2 transition-all duration-300 ease-in-out line-clamp-2">
-                            <div class="text-lg font-bold text-gray-800">${group.title}</div>
+                           <a href="/group/${group.id}"><p class="text-lg font-bold text-gray-800">${group.title}</p></a>
 
                             <p class="text-gray-600 whitespace-pre-line">${group.description.replace(/^[\r\n]+/, '')}</p>
 
