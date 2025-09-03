@@ -69,7 +69,8 @@
 <div class="email-wrapper">
     <div class="email-content">
         <div class="email-header">
-            <img src="https://placehold.co/600x400" alt="Logo">
+            <img src="https://vsetancy.ru/images/logo-black.png" alt="ВсеТанцы"
+                 style="max-height:80px; height:auto; width:auto; display:block; margin:0 auto 15px;">
             {{ $subject }}
         </div>
 

@@ -223,7 +223,7 @@
                                        value="{{ $day }}" class="hidden peer"
                                         {{ in_array($day, $selectedWeeks) ? 'checked' : '' }}/>
                                 <span
-                                        class="btn btn-neutral btn-sm font-bold py-2 px-4 rounded inline-block peer-checked:bg-gray-200 peer-checked:border-gray-200 peer-checked:text-black">
+                                        class="btn btn-neutral btn-sm font-bold py-2 px-4 rounded inline-block peer-checked:bg-[#00EFEE] peer-checked:border-[#00EFEE] peer-checked:text-black">
                                 {{ $day }}
                             </span>
                             </label>

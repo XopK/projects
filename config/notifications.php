@@ -182,7 +182,7 @@ return [
             'client' => [
                 'subject' => 'Ваша заявка была отклонена!',
                 'message' => "Здравствуйте, <strong>:client</strong>!<br><br>"
-                    . "Ваша заявка в набор '<strong>:title_group</strong>' была отклонена.<br>"
+                    . "Ваша заявка в набор '<strong>:title_group</strong>' была отклонена.<br><br>"
                     . "<a href=\":url\" style=\"color: #007BFF; text-decoration: none;\">Открыть детали набора</a>",
             ]
         ],
@@ -219,7 +219,7 @@ return [
             'client' => [
                 'subject' => 'Вашу запись вернули в заявки',
                 'message' => "Здравствуйте, <strong>:client</strong>!<br><br>"
-                    . "Ваша запись в набор '<strong>:title_group</strong>' была возвращена в статус: Ожидает подтверждения.<br>"
+                    . "Ваша запись в набор '<strong>:title_group</strong>' была возвращена в статус: Ожидает подтверждения.<br><br>"
                     . "<a href=\":url\" style=\"color: #007BFF; text-decoration: none;\">Открыть детали набора</a>",
             ]
         ],

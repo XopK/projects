@@ -21,7 +21,8 @@
                 @endauth
             </ul>
         </div>
-        <a href="{{route('index')}}" class="btn btn-ghost text-xl px-1 font-nimbus font-bold flex align-items-center uppercase"><span class="text-[#00EFEE]">Все</span>танцы</a>
+        <a href="{{route('index')}}" class="text-xl px-1 font-nimbus font-bold flex items-center uppercase"><span
+                class="text-[#00EFEE]">Все</span>танцы</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
